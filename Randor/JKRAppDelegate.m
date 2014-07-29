@@ -7,12 +7,22 @@
 //
 
 #import "JKRAppDelegate.h"
+#import "JKRHomeVC.h"
 
 @implementation JKRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    // Override point for customization after application launch.
+//    
+//    // Will auto load the corresponding viewController.xib
+//    self.viewController = [[JKRHomeVC alloc] initWithNibName:nil bundle:nil];
+//    
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    self.window.rootViewController = self.viewController;
+//    [self.window makeKeyAndVisible];
+
     return YES;
 }
 							

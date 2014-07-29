@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JKRHomeVC.h"
 @interface JKRAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+//@property (strong, nonatomic) JKRHomeVC *viewController;
 @end

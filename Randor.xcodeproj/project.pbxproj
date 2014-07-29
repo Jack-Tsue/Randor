@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85922DB1198635FB009DA983 /* JTTableViewGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 85922DAB198635FB009DA983 /* JTTableViewGestureRecognizer.m */; };
+		85922DB2198635FB009DA983 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 85922DAC198635FB009DA983 /* LICENSE */; };
+		85922DB3198635FB009DA983 /* TransformableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85922DAE198635FB009DA983 /* TransformableTableViewCell.m */; };
+		85922DB4198635FB009DA983 /* UIColor+JTGestureBasedTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 85922DB0198635FB009DA983 /* UIColor+JTGestureBasedTableViewHelper.m */; };
+		85922DB9198638BE009DA983 /* JKRHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 85922DB8198638BE009DA983 /* JKRHomeVC.m */; };
+		85922DBB1986430B009DA983 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85922DBA1986430B009DA983 /* QuartzCore.framework */; };
+		85922DBE19874C6C009DA983 /* JKRTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 85922DBD19874C6C009DA983 /* JKRTopic.m */; };
 		85D99F3A1986316500B4D671 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D99F391986316500B4D671 /* Foundation.framework */; };
 		85D99F3C1986316500B4D671 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D99F3B1986316500B4D671 /* CoreGraphics.framework */; };
 		85D99F3E1986316500B4D671 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D99F3D1986316500B4D671 /* UIKit.framework */; };
@@ -14,7 +21,6 @@
 		85D99F461986316500B4D671 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D99F451986316500B4D671 /* main.m */; };
 		85D99F4A1986316500B4D671 /* JKRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D99F491986316500B4D671 /* JKRAppDelegate.m */; };
 		85D99F4D1986316500B4D671 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D99F4B1986316500B4D671 /* Main.storyboard */; };
-		85D99F501986316500B4D671 /* JKRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D99F4F1986316500B4D671 /* JKRViewController.m */; };
 		85D99F521986316500B4D671 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85D99F511986316500B4D671 /* Images.xcassets */; };
 		85D99F591986316600B4D671 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D99F581986316600B4D671 /* XCTest.framework */; };
 		85D99F5A1986316600B4D671 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D99F391986316500B4D671 /* Foundation.framework */; };
@@ -34,6 +40,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		85922DAA198635FB009DA983 /* JTTableViewGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTTableViewGestureRecognizer.h; sourceTree = "<group>"; };
+		85922DAB198635FB009DA983 /* JTTableViewGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTTableViewGestureRecognizer.m; sourceTree = "<group>"; };
+		85922DAC198635FB009DA983 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		85922DAD198635FB009DA983 /* TransformableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformableTableViewCell.h; sourceTree = "<group>"; };
+		85922DAE198635FB009DA983 /* TransformableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformableTableViewCell.m; sourceTree = "<group>"; };
+		85922DAF198635FB009DA983 /* UIColor+JTGestureBasedTableViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JTGestureBasedTableViewHelper.h"; sourceTree = "<group>"; };
+		85922DB0198635FB009DA983 /* UIColor+JTGestureBasedTableViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JTGestureBasedTableViewHelper.m"; sourceTree = "<group>"; };
+		85922DB7198638BE009DA983 /* JKRHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKRHomeVC.h; sourceTree = "<group>"; };
+		85922DB8198638BE009DA983 /* JKRHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKRHomeVC.m; sourceTree = "<group>"; };
+		85922DBA1986430B009DA983 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		85922DBC19874C6C009DA983 /* JKRTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKRTopic.h; sourceTree = "<group>"; };
+		85922DBD19874C6C009DA983 /* JKRTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKRTopic.m; sourceTree = "<group>"; };
 		85D99F361986316500B4D671 /* Randor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Randor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D99F391986316500B4D671 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		85D99F3B1986316500B4D671 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,8 +63,6 @@
 		85D99F481986316500B4D671 /* JKRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKRAppDelegate.h; sourceTree = "<group>"; };
 		85D99F491986316500B4D671 /* JKRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKRAppDelegate.m; sourceTree = "<group>"; };
 		85D99F4C1986316500B4D671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		85D99F4E1986316500B4D671 /* JKRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKRViewController.h; sourceTree = "<group>"; };
-		85D99F4F1986316500B4D671 /* JKRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKRViewController.m; sourceTree = "<group>"; };
 		85D99F511986316500B4D671 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		85D99F571986316600B4D671 /* RandorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D99F581986316600B4D671 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -60,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85922DBB1986430B009DA983 /* QuartzCore.framework in Frameworks */,
 				85D99F3C1986316500B4D671 /* CoreGraphics.framework in Frameworks */,
 				85D99F3E1986316500B4D671 /* UIKit.framework in Frameworks */,
 				85D99F3A1986316500B4D671 /* Foundation.framework in Frameworks */,
@@ -79,6 +96,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85922DA8198635D4009DA983 /* 3rd */ = {
+			isa = PBXGroup;
+			children = (
+				85922DA9198635FB009DA983 /* JTGestureBasedTableView */,
+			);
+			path = 3rd;
+			sourceTree = "<group>";
+		};
+		85922DA9198635FB009DA983 /* JTGestureBasedTableView */ = {
+			isa = PBXGroup;
+			children = (
+				85922DAA198635FB009DA983 /* JTTableViewGestureRecognizer.h */,
+				85922DAB198635FB009DA983 /* JTTableViewGestureRecognizer.m */,
+				85922DAD198635FB009DA983 /* TransformableTableViewCell.h */,
+				85922DAE198635FB009DA983 /* TransformableTableViewCell.m */,
+				85922DAF198635FB009DA983 /* UIColor+JTGestureBasedTableViewHelper.h */,
+				85922DB0198635FB009DA983 /* UIColor+JTGestureBasedTableViewHelper.m */,
+				85922DAC198635FB009DA983 /* LICENSE */,
+			);
+			path = JTGestureBasedTableView;
+			sourceTree = "<group>";
+		};
+		85922DB5198637E4009DA983 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				85922DBC19874C6C009DA983 /* JKRTopic.h */,
+				85922DBD19874C6C009DA983 /* JKRTopic.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		85922DB6198637E4009DA983 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				85922DB7198638BE009DA983 /* JKRHomeVC.h */,
+				85922DB8198638BE009DA983 /* JKRHomeVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		85D99F2D1986316500B4D671 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +158,7 @@
 		85D99F381986316500B4D671 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85922DBA1986430B009DA983 /* QuartzCore.framework */,
 				85D99F391986316500B4D671 /* Foundation.framework */,
 				85D99F3B1986316500B4D671 /* CoreGraphics.framework */,
 				85D99F3D1986316500B4D671 /* UIKit.framework */,
@@ -112,11 +170,12 @@
 		85D99F3F1986316500B4D671 /* Randor */ = {
 			isa = PBXGroup;
 			children = (
+				85922DB5198637E4009DA983 /* Model */,
+				85922DB6198637E4009DA983 /* ViewController */,
+				85922DA8198635D4009DA983 /* 3rd */,
 				85D99F481986316500B4D671 /* JKRAppDelegate.h */,
 				85D99F491986316500B4D671 /* JKRAppDelegate.m */,
 				85D99F4B1986316500B4D671 /* Main.storyboard */,
-				85D99F4E1986316500B4D671 /* JKRViewController.h */,
-				85D99F4F1986316500B4D671 /* JKRViewController.m */,
 				85D99F511986316500B4D671 /* Images.xcassets */,
 				85D99F401986316500B4D671 /* Supporting Files */,
 			);
@@ -231,6 +290,7 @@
 			files = (
 				85D99F521986316500B4D671 /* Images.xcassets in Resources */,
 				85D99F441986316500B4D671 /* InfoPlist.strings in Resources */,
+				85922DB2198635FB009DA983 /* LICENSE in Resources */,
 				85D99F4D1986316500B4D671 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,9 +310,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85922DBE19874C6C009DA983 /* JKRTopic.m in Sources */,
 				85D99F4A1986316500B4D671 /* JKRAppDelegate.m in Sources */,
-				85D99F501986316500B4D671 /* JKRViewController.m in Sources */,
+				85922DB9198638BE009DA983 /* JKRHomeVC.m in Sources */,
+				85922DB1198635FB009DA983 /* JTTableViewGestureRecognizer.m in Sources */,
 				85D99F461986316500B4D671 /* main.m in Sources */,
+				85922DB3198635FB009DA983 /* TransformableTableViewCell.m in Sources */,
+				85922DB4198635FB009DA983 /* UIColor+JTGestureBasedTableViewHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +521,7 @@
 				85D99F6A1986316600B4D671 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85D99F6B1986316600B4D671 /* Build configuration list for PBXNativeTarget "RandorTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +530,7 @@
 				85D99F6D1986316600B4D671 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

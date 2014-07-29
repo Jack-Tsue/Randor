@@ -1,5 +1,5 @@
 //
-//  JKRViewController.h
+//  JKRHomeVC.h
 //  Randor
 //
 //  Created by Jack on 28/7/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JKRViewController : UIViewController
-
+@interface JKRHomeVC : UITableViewController
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *addBtn;
 @end
