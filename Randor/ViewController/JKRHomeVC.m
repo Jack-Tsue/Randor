@@ -11,6 +11,7 @@
 #import "TransformableTableViewCell.h"
 #import "JTTableViewGestureRecognizer.h"
 #import "UIColor+JTGestureBasedTableViewHelper.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface JKRHomeVC ()<JTTableViewGestureEditingRowDelegate, JTTableViewGestureMoveRowDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) NSMutableArray *rows;
@@ -20,6 +21,8 @@
 
 @implementation JKRHomeVC {
     NSMutableArray *topicArr;
+    CMMotionManager *motionManager;
+    int renameIndex;
 }
 
 #define ADDING_CELL @"Continue..."
@@ -56,7 +59,7 @@
         }
     } else {
         topicArr = [[NSMutableArray alloc] init];
-        JKRTopic *hint1 = [[JKRTopic alloc] initWithName:@"Swipe to right to enter the topic"];
+        JKRTopic *hint1 = [[JKRTopic alloc] initWithName:@"Swipe to right to rename the topic"];
         JKRTopic *hint2 = [[JKRTopic alloc] initWithName:@"Swipe to left to delete the topic"];
         JKRTopic *hint3 = [[JKRTopic alloc] initWithName:@"Long hold to start reorder cell"];
         [topicArr addObject:hint1];
@@ -77,6 +80,25 @@
     self.tableView.rowHeight = NORMAL_CELL_FINISHING_HEIGHT;
     UIBarButtonItem *barListBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemAdd target:self action:@selector(addNewTopic)];
     self.navigationItem.rightBarButtonItem = barListBtn;
+    
+    motionManager = [[CMMotionManager alloc] init];
+    if([motionManager isGyroAvailable]){
+        NSLog(@"Gryro is available.");
+        
+        if ([motionManager  isGyroActive] == NO){
+            [motionManager  setGyroUpdateInterval:1.0f / 1.0f];
+            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+            [motionManager startGyroUpdatesToQueue:queue
+                                            withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                                NSLog(@"Gyro Rotation x = %.04f", gyroData.rotationRate.x);
+                                                NSLog(@"Gyro Rotation y = %.04f", gyroData.rotationRate.y);
+                                                NSLog(@"Gyro Rotation z = %.04f", gyroData.rotationRate.z);
+                                            }];
+        }
+    }else {
+        NSLog(@"Gyro is not available.");
+    }
+
 }
 
 #pragma mark UITableViewDatasource
@@ -234,8 +256,16 @@
         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     } else if (state == JTTableViewCellEditingStateRight) {
-        // An example to retain the cell at commiting at JTTableViewCellEditingStateRight
-//        [self.rows replaceObjectAtIndex:indexPath.row withObject:DONE_CELL];
+        renameIndex = indexPath.row;
+        UIAlertView *prompt = [[UIAlertView alloc] initWithTitle:
+                               [NSString stringWithFormat:@"Rename \"%@\"",
+                                [self.rows objectAtIndex:renameIndex]]
+                                                         message:nil
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                               otherButtonTitles:@"Rename it!", nil];
+        prompt.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [prompt show];
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     } else {
         // JTTableViewCellEditingStateMiddle shouldn't really happen in
@@ -300,6 +330,14 @@
         JKRTopic *topic = [[JKRTopic alloc] initWithName:topicNameTF.text];
         [topicArr insertObject:topic atIndex:0];
 		[self.rows insertObject:topicNameTF.text atIndex:0];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
+        [self.tableView reloadData];
+	}
+    if([title isEqualToString:@"Rename it!"])
+	{
+		UITextField *topicNameTF = [alertView textFieldAtIndex:0];
+        [[topicArr objectAtIndex:renameIndex] setTopicName:topicNameTF.text];
+        [self.rows replaceObjectAtIndex:renameIndex withObject:topicNameTF.text];
         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
         [self.tableView reloadData];
 	}
