@@ -170,13 +170,13 @@
 		85D99F3F1986316500B4D671 /* Randor */ = {
 			isa = PBXGroup;
 			children = (
+				85922DA8198635D4009DA983 /* 3rd */,
 				85922DB5198637E4009DA983 /* Model */,
 				85922DB6198637E4009DA983 /* ViewController */,
-				85922DA8198635D4009DA983 /* 3rd */,
 				85D99F481986316500B4D671 /* JKRAppDelegate.h */,
 				85D99F491986316500B4D671 /* JKRAppDelegate.m */,
-				85D99F4B1986316500B4D671 /* Main.storyboard */,
 				85D99F511986316500B4D671 /* Images.xcassets */,
+				85D99F4B1986316500B4D671 /* Main.storyboard */,
 				85D99F401986316500B4D671 /* Supporting Files */,
 			);
 			path = Randor;

@@ -7,6 +7,7 @@
 //
 
 #import "JKRHomeVC.h"
+#import "JKRTopic.h"
 #import "TransformableTableViewCell.h"
 #import "JTTableViewGestureRecognizer.h"
 #import "UIColor+JTGestureBasedTableViewHelper.h"
@@ -17,7 +18,9 @@
 @property (nonatomic, strong) id grabbedObject;
 @end
 
-@implementation JKRHomeVC
+@implementation JKRHomeVC {
+    NSMutableArray *topicArr;
+}
 
 #define ADDING_CELL @"Continue..."
 #define DONE_CELL @"Done"
@@ -25,6 +28,7 @@
 #define COMMITING_CREATE_CELL_HEIGHT 60
 #define NORMAL_CELL_FINISHING_HEIGHT 60
 #define TINT_COLOR [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]
+
 #pragma mark - View lifecycle
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -39,14 +43,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // In this example, we setup self.rows as datasource
-    self.rows = [NSMutableArray arrayWithObjects:
-                 @"Swipe to right to enter the topic",
-                 @"Swipe to left to delete the topic",
-                 @"Long hold to start reorder cell",
-                 nil];
-    
-    
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *savedArray = [currentDefaults objectForKey:@"topicArray"];
+    if (savedArray != nil)
+    {
+        NSArray *oldArray = [NSKeyedUnarchiver unarchiveObjectWithData:savedArray];
+        if (oldArray != nil) {
+            topicArr = [[NSMutableArray alloc] initWithArray:oldArray];
+            
+        } else {
+            topicArr = [[NSMutableArray alloc] init];
+        }
+    } else {
+        topicArr = [[NSMutableArray alloc] init];
+        JKRTopic *hint1 = [[JKRTopic alloc] initWithName:@"Swipe to right to enter the topic"];
+        JKRTopic *hint2 = [[JKRTopic alloc] initWithName:@"Swipe to left to delete the topic"];
+        JKRTopic *hint3 = [[JKRTopic alloc] initWithName:@"Long hold to start reorder cell"];
+        [topicArr addObject:hint1];
+        [topicArr addObject:hint2];
+        [topicArr addObject:hint3];
+    }
+    self.rows = [[NSMutableArray alloc] init];
+    for (JKRTopic *tmpTopic in topicArr) {
+        [self.rows addObject:tmpTopic.topicName];
+    }
     // Setup your tableView.delegate and tableView.datasource,
     // then enable gesture recognition in one line.
     self.tableViewRecognizer = [self.tableView enableGestureTableViewWithDelegate:self];
@@ -210,10 +230,12 @@
     if (state == JTTableViewCellEditingStateLeft) {
         // An example to discard the cell at JTTableViewCellEditingStateLeft
         [self.rows removeObjectAtIndex:indexPath.row];
+        [topicArr removeObjectAtIndex:indexPath.row];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     } else if (state == JTTableViewCellEditingStateRight) {
         // An example to retain the cell at commiting at JTTableViewCellEditingStateRight
-        [self.rows replaceObjectAtIndex:indexPath.row withObject:DONE_CELL];
+//        [self.rows replaceObjectAtIndex:indexPath.row withObject:DONE_CELL];
         [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     } else {
         // JTTableViewCellEditingStateMiddle shouldn't really happen in
@@ -275,7 +297,10 @@
 	if([title isEqualToString:@"Name it!"])
 	{
 		UITextField *topicNameTF = [alertView textFieldAtIndex:0];
+        JKRTopic *topic = [[JKRTopic alloc] initWithName:topicNameTF.text];
+        [topicArr insertObject:topic atIndex:0];
 		[self.rows insertObject:topicNameTF.text atIndex:0];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
         [self.tableView reloadData];
 	}
 }

@@ -7,11 +7,31 @@
 //
 
 #import "JKRTopic.h"
-@interface JKRTopic()
-@property(nonatomic, retain) NSString *topicName;
-@property(nonatomic, retain) NSMutableArray *items;
-@end
 
 @implementation JKRTopic
+- (id)initWithName:(NSString *)name
+{
+    if (self) {
+        self.topicName = name;
+        self.items = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
+- (void)encodeWithCoder:(NSCoder *)coder;
+{
+    [coder encodeObject:self.items forKey:@"items"];
+    [coder encodeObject:self.topicName forKey:@"topicName"];
+}
+
+- (id)initWithCoder:(NSCoder *)coder;
+{
+    self = [[JKRTopic alloc] init];
+    if (self != nil)
+    {
+        self.topicName = [coder decodeObjectForKey:@"topicName"];
+        self.items = [coder decodeObjectForKey:@"items"];
+    }
+    return self;
+}
 @end

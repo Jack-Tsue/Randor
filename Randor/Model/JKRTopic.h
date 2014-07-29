@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JKRTopic : NSObject
-
+@interface JKRTopic : NSObject<NSCoding>
+@property(nonatomic, retain) NSString *topicName;
+@property(nonatomic, retain) NSMutableArray *items;
+- (id)initWithName:(NSString *)name;
 @end
