@@ -22,7 +22,7 @@
 @implementation JKRHomeVC {
     NSMutableArray *topicArr;
     CMMotionManager *motionManager;
-    int renameIndex;
+    NSInteger renameIndex;
 }
 
 #define ADDING_CELL @"Continue..."
@@ -62,9 +62,11 @@
         JKRTopic *hint1 = [[JKRTopic alloc] initWithName:@"Swipe to right to rename the topic"];
         JKRTopic *hint2 = [[JKRTopic alloc] initWithName:@"Swipe to left to delete the topic"];
         JKRTopic *hint3 = [[JKRTopic alloc] initWithName:@"Long hold to start reorder cell"];
+        JKRTopic *hint4 = [[JKRTopic alloc] initWithName:@"shake to random and nod to reset"];
         [topicArr addObject:hint1];
         [topicArr addObject:hint2];
         [topicArr addObject:hint3];
+        [topicArr addObject:hint4];
     }
     self.rows = [[NSMutableArray alloc] init];
     for (JKRTopic *tmpTopic in topicArr) {
@@ -86,13 +88,26 @@
         NSLog(@"Gryro is available.");
         
         if ([motionManager  isGyroActive] == NO){
-            [motionManager  setGyroUpdateInterval:1.0f / 1.0f];
+            motionManager.accelerometerUpdateInterval =0.3;
             NSOperationQueue *queue = [[NSOperationQueue alloc] init];
             [motionManager startGyroUpdatesToQueue:queue
                                             withHandler:^(CMGyroData *gyroData, NSError *error) {
-                                                NSLog(@"Gyro Rotation x = %.04f", gyroData.rotationRate.x);
-                                                NSLog(@"Gyro Rotation y = %.04f", gyroData.rotationRate.y);
-                                                NSLog(@"Gyro Rotation z = %.04f", gyroData.rotationRate.z);
+                                                if (gyroData.rotationRate.x>5.0f) {
+                                                    // refresh by nodding
+                                                    [self.rows removeAllObjects];
+                                                    for (JKRTopic *tmpTopic in topicArr) {
+                                                        [self.rows addObject:tmpTopic.topicName];
+                                                    }
+                                                    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil
+                                                                                  waitUntilDone:NO];
+                                                }else if (gyroData.rotationRate.z>5.0f) {
+                                                    // random by shaking
+                                                    JKRTopic *randomResult = [topicArr objectAtIndex:(arc4random()%[topicArr count])];
+                                                    [self.rows removeAllObjects];
+                                                    [self.rows addObject:randomResult.topicName];
+                                                    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil
+                                                                                  waitUntilDone:NO];
+                                                }
                                             }];
         }
     }else {
@@ -330,16 +345,16 @@
         JKRTopic *topic = [[JKRTopic alloc] initWithName:topicNameTF.text];
         [topicArr insertObject:topic atIndex:0];
 		[self.rows insertObject:topicNameTF.text atIndex:0];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
-        [self.tableView reloadData];
+        
 	}
     if([title isEqualToString:@"Rename it!"])
 	{
 		UITextField *topicNameTF = [alertView textFieldAtIndex:0];
         [[topicArr objectAtIndex:renameIndex] setTopicName:topicNameTF.text];
         [self.rows replaceObjectAtIndex:renameIndex withObject:topicNameTF.text];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
-        [self.tableView reloadData];
 	}
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:topicArr] forKey:@"topicArray"];
+    [self.tableView reloadData];
 }
 @end

@@ -175,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				85922DA8198635D4009DA983 /* 3rd */,
+				85E837D51989EB18001B1A70 /* View */,
 				85922DB5198637E4009DA983 /* Model */,
 				85922DB6198637E4009DA983 /* ViewController */,
 				85D99F481986316500B4D671 /* JKRAppDelegate.h */,
@@ -213,6 +214,13 @@
 				85D99F611986316600B4D671 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85E837D51989EB18001B1A70 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
